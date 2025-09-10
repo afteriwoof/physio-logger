@@ -162,8 +162,9 @@ function app(){
       return local.toISOString().slice(0,10);
     },
     prettyDate(iso){
-      const d = new Date(iso);
-      return d.toLocaleDateString(undefined,{ weekday:'short', month:'short', day:'numeric'});
+      const [y,m,d] = iso.split('-').map(Number);
+      const dt = new Date(y, m-1, d);
+      return dt.toLocaleDateString(undefined,{ weekday:'short', month:'short', day:'numeric'});
     },
     uid(){ return crypto.randomUUID(); },
     save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify({exercises:this.exercises, logs:this.logs})); },
@@ -200,7 +201,10 @@ function app(){
     logSet(exId,reps){
       let l = this.logs.find(l=>l.exerciseId===exId && l.date===this.today);
       if(!l){ l = {id:this.uid(), exerciseId:exId, date:this.today, sets:[]}; this.logs.push(l); }
-      l.sets.push(Math.max(1,Number(reps||1)));
+      const exercise = this.exercises.find(e=>e.id===exId);
+      const validReps = Number(reps);
+      const safeReps = (isNaN(validReps) || validReps < 1) ? (exercise?.targetReps || 1) : Math.floor(validReps);
+      l.sets.push(safeReps);
       this.save(); this.refreshStats();
     },
     undoSet(exId){
