@@ -1,7 +1,7 @@
 {
-  "name": "Physio Logger",
+  "name": "Physio Tracker",
   "short_name": "Physio",
-  "description": "Local-only physiotherapy exercise tracker that works offline as a PWA.",
+  "description": "Local-only physiotherapy exercise tracker that works offline as a progressive web app (PWA).",
   "id": "./",
   "start_url": "./",
   "scope": "./",

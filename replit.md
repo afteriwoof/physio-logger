@@ -1,6 +1,6 @@
 # Overview
 
-Physio Logger is a minimal, single-page web application designed for tracking physical therapy exercises and daily routines. The application provides a simple interface for logging exercise sets, managing daily routines, and monitoring completion statistics over time. Built as a lightweight client-side application, it focuses on fast interaction and ease of use for physiotherapy patients who need to track their exercise compliance.
+Physio Tracker is a minimal, single-page web application designed for tracking physical therapy exercises and daily routines. The application provides a simple interface for logging exercise sets, managing daily routines, and monitoring completion statistics over time. Built as a lightweight client-side application, it focuses on fast interaction and ease of use for physiotherapy patients who need to track their exercise compliance.
 
 # User Preferences
 
