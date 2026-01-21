@@ -5,22 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Physio Logger</title>
   <!-- PWA manifest -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#10b981">
+  <!-- iOS install polish -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" href="./icon-192.png">
   <!-- Service worker registration -->
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js")
+        navigator.serviceWorker.register("./sw.js")
           .then(reg => console.log("SW registered:", reg))
           .catch(err => console.error("SW failed:", err));
       });
     }
   </script>
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Alpine.js -->
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Local vendor scripts (so offline works) -->
+  <script src="./vendor/tailwindcss.js"></script>
+  <script defer src="./vendor/alpine.min.js"></script>
 </head>
 <body class="h-full bg-slate-50 text-slate-900">
   <div class="max-w-3xl mx-auto p-4 sm:p-6">
@@ -39,6 +42,56 @@
         <span class="text-xs text-slate-600" x-text="Math.round(stats.completionPct*100)+'%'" aria-label="7 day completion percent"></span>
       </div>
     </header>
+
+    <!-- First-run onboarding (dismissible) -->
+    <section x-show="showOnboarding" x-cloak class="mt-4 p-4 rounded-2xl border bg-white shadow-sm">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <h2 class="text-lg font-semibold">Welcome 👋</h2>
+          <p class="text-sm text-slate-700 mt-1">
+            Physio Logger is a simple, local-only tracker for physio exercises. No accounts, no cloud sync.
+            Your data stays on this device unless you export it.
+          </p>
+        </div>
+        <button @click="dismissOnboarding()"
+                class="shrink-0 px-3 py-1.5 rounded-lg text-sm bg-slate-100 hover:bg-slate-200">
+          Dismiss
+        </button>
+      </div>
+
+      <div class="mt-3 grid gap-3">
+        <details class="rounded-xl border bg-slate-50 p-3">
+          <summary class="cursor-pointer font-medium">Install on iPhone / iPad (Safari)</summary>
+          <ol class="list-decimal ml-5 mt-2 text-sm text-slate-700 space-y-1">
+            <li>Open this site in <strong>Safari</strong>.</li>
+            <li>Tap <strong>Share</strong> (square with arrow up).</li>
+            <li>Tap <strong>Add to Home Screen</strong>.</li>
+            <li>Open from the new icon for the best offline experience.</li>
+          </ol>
+        </details>
+
+        <details class="rounded-xl border bg-slate-50 p-3">
+          <summary class="cursor-pointer font-medium">Install on Android (Chrome)</summary>
+          <ol class="list-decimal ml-5 mt-2 text-sm text-slate-700 space-y-1">
+            <li>Open this site in <strong>Chrome</strong>.</li>
+            <li>Tap the menu (⋮) → <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li>
+            <li>Open from the new icon for offline use.</li>
+          </ol>
+        </details>
+
+        <div class="flex flex-wrap gap-2 pt-1">
+          <a href="./privacy.html" class="text-sm underline text-slate-700">Privacy</a>
+          <a href="./disclaimer.html" class="text-sm underline text-slate-700">Disclaimer</a>
+          <a href="mailto:aiinnovatoinideas@gmail.com?subject=Physio%20Logger%20feedback"
+             class="text-sm underline text-slate-700">Feedback</a>
+
+          <button @click="dismissOnboarding()"
+                  class="ml-auto px-4 py-2 rounded-xl bg-emerald-600 text-white text-sm hover:bg-emerald-700">
+            Start using the app
+          </button>
+        </div>
+      </div>
+    </section>
 
     <!-- Quick actions -->
     <section class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -147,9 +200,12 @@ function app(){
     nextReps: {},
     stats: { completionPct:0, last7Days:[], streakById:{} },
     openAdd:false,
+    showOnboarding: true,
 
     init(){
       this.today = this.todayStr();
+      const onboarded = localStorage.getItem("physio_onboarded_v1") === "1";
+      this.showOnboarding = !onboarded;
       const saved = this.load();
       if(saved){ this.exercises = saved.exercises; this.logs = saved.logs; }
       if(this.exercises.length===0){
@@ -167,6 +223,11 @@ function app(){
       });
     },
 
+    dismissOnboarding(){
+      localStorage.setItem("physio_onboarded_v1", "1");
+      this.showOnboarding = false;
+    },
+    
     // --- Helpers ---
     todayStr(d=new Date()){
       // local YYYY-MM-DD
