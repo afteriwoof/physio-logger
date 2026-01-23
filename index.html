@@ -50,7 +50,7 @@
           <h2 class="text-lg font-semibold">Welcome 👋</h2>
           <p class="text-sm text-slate-700 mt-1">
             Physio Tracker is a simple, local-only tracker for physio exercises. No accounts, no cloud sync.
-            Your data stays on this device unless you export it.
+            Your data stays on this device unless you export it - meaning if you switch browsers, devices, or clear site data, your entries won't appear. Use Export/Import to backup or move your data.
           </p>
         </div>
         <button @click="dismissOnboarding()"
@@ -61,7 +61,7 @@
 
       <div class="mt-3 grid gap-3">
         <details class="rounded-xl border bg-slate-50 p-3">
-          <summary class="cursor-pointer font-medium">Install on iPhone / iPad (Safari)</summary>
+          <summary class="cursor-pointer font-medium">Install on iPhone / iPad (e.g. Safari)</summary>
           <ol class="list-decimal ml-5 mt-2 text-sm text-slate-700 space-y-1">
             <li>Open this site in <strong>Safari</strong>.</li>
             <li>Tap <strong>Share</strong> (square with arrow up).</li>
@@ -71,7 +71,7 @@
         </details>
 
         <details class="rounded-xl border bg-slate-50 p-3">
-          <summary class="cursor-pointer font-medium">Install on Android (Chrome)</summary>
+          <summary class="cursor-pointer font-medium">Install on Android (e.g. Chrome)</summary>
           <ol class="list-decimal ml-5 mt-2 text-sm text-slate-700 space-y-1">
             <li>Open this site in <strong>Chrome</strong>.</li>
             <li>Tap the menu (⋮) → <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li>
@@ -177,7 +177,7 @@
         <label class="rounded-2xl bg-slate-200 px-4 py-2 hover:bg-slate-300 cursor-pointer">
           Import JSON<input type="file" class="hidden" accept="application/json" @change="importJSON($event)" />
         </label>
-        <span class="text-xs text-slate-500">Your data is stored locally in your browser (no server).</span>
+        <span class="text-xs text-slate-500">Your data is stored locally in your browser on this device only (no server). If you switch browsers, devices, or clear site data, your entries won't appear. Use Export/Import to back up or move your data.</span>
       </div>
     </section>
 
@@ -361,11 +361,11 @@ function app(){
     <footer class="mt-6 pb-6">
       <div class="max-w-3xl mx-auto px-4 sm:px-6">
         <div class="rounded-2xl border bg-white shadow-sm px-4 py-3 flex flex-wrap items-center gap-3">
-          <span class="text-sm text-slate-600">Help & info:</span>
+          <span class="text-sm text-slate-600">Help improve Physio Tracker: what felt useful or confusing?</span>
 
-          <a href="mailto:aiinnovatoinideas@gmail.com?subject=Physio%20Tracker%20feedback"
+          <a href="mailto:aiinnovationdesignlab@gmail.com?subject=Physio%20Tracker%20feedback"
              class="text-sm underline text-slate-700">
-            Feedback
+            Send Feedback
           </a>
 
           <a href="./privacy.html" class="text-sm underline text-slate-700">Privacy</a>
