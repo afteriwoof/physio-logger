@@ -47,10 +47,17 @@
     <section x-show="showOnboarding" x-cloak class="mt-4 p-4 rounded-2xl border bg-white shadow-sm">
       <div class="flex items-start justify-between gap-3">
         <div>
-          <h2 class="text-lg font-semibold">Welcome 👋</h2>
+          <h2 class="text-lg font-semibold">A simple way to remember what physio exercises you did and stay consistent between appointments.</h2>
           <p class="text-sm text-slate-700 mt-1">
-            Physio Tracker is a simple, local-only tracker for physio exercises. No accounts, no cloud sync.
-            Your data stays on this device unless you export it - meaning if you switch browsers, devices, or clear site data, your entries won't appear. Use Export/Import to backup or move your data.
+            Physio Tracker helps you keep a clear record of your rehab exercises over time — what you did and how often 
+            — so you can build a picture of your progress.
+          </p>  
+          <p class="text-sm text-slate-600 mt-2">
+            It's deliberately simple, works offline, and doesn't require accounts or cloud sync.
+          </p>
+          <p class="text-xs text-slate-500 mt-2">
+            Your data stays on this device unless you export it. If you switch browsers, devices,
+            or clear site data, your entries won't appear. Use Export/Import to back up or move your data.
           </p>
         </div>
         <button @click="dismissOnboarding()"
