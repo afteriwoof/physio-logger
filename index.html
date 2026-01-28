@@ -223,6 +223,7 @@ function app(){
     showOnboarding: true,
 
     init(){
+      try {track('pt_debug_ping');} catch {}
       this.today = this.todayStr();
       const onboarded = localStorage.getItem("physio_onboarded_v1") === "1";
       this.showOnboarding = !onboarded;
