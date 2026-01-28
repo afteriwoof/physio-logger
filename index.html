@@ -24,6 +24,18 @@
   <!-- Local vendor scripts (so offline works) -->
   <script src="./vendor/tailwindcss.js"></script>
   <script defer src="./vendor/alpine.min.js"></script>
+  <!-- Google Analytics (minimal, privacy-conscious) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MES7VBBT0S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MES7VBBT0S', {
+      anonymize_ip: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+  </script>
 </head>
 <body class="h-full bg-slate-50 text-slate-900">
   <div class="max-w-3xl mx-auto p-4 sm:p-6">
@@ -211,6 +223,12 @@
 <script>
 function app(){
   const STORAGE_KEY = 'physio_v1';
+    // Analytics helper (won't break offline)
+    function track(eventName, params) {
+      if (window.gtag) {
+        window.gtag('event', eventName, params || {});
+      }
+    }
   return {
     // State
     exercises: [], // {id,name,targetSets,targetReps,side}
@@ -247,7 +265,9 @@ function app(){
     dismissOnboarding(){
       localStorage.setItem("physio_onboarded_v1", "1");
       this.showOnboarding = false;
+      track('dismiss_onboarding');
     },
+
     
     // --- Helpers ---
     todayStr(d=new Date()){
@@ -301,6 +321,7 @@ function app(){
       const safeReps = (isNaN(validReps) || validReps < 1) ? (exercise?.targetReps || 1) : Math.floor(validReps);
       l.sets.push(safeReps);
       this.save(); this.refreshStats();
+      try { track('log_set', { exercise_id: String(exId), reps: safeReps }); } catch {}
     },
     undoSet(exId){
       let l = this.findTodayLog(exId); if(!l) return;
