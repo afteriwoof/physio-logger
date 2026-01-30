@@ -2,153 +2,238 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Physio Tracker — simple rehab exercise tracking</title>
-  <meta name="description" content="A simple way to keep track of your physio exercises. Built for rehab, not workouts. Free, no account, works offline, data stays on your device." />
+
+  <meta name="description" content="Keep track of your physio exercises without turning it into a workout app. Free, no account, works offline, data stays on your device." />
+  <meta name="theme-color" content="#0f766e" />
+
   <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
-  <header class="container header">
-    <div class="brand">
-      <span class="brand-mark">PT</span>
-      <span class="brand-name">Physio Tracker</span>
+  <!-- Sticky header -->
+  <header class="topbar" id="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="./index.html" aria-label="Physio Tracker home">
+        <span class="brand-mark">PT</span>
+        <span class="brand-name">Physio Tracker</span>
+      </a>
+
+      <nav class="topbar-actions" aria-label="Primary">
+        <a class="btn ghost" href="./">Try the free app</a>
+        <a class="btn primary" href="https://forms.gle/J8UFMqWyA77Pmu286" target="_blank" rel="noopener">Join Pro waitlist</a>
+      </nav>
     </div>
-    <nav class="nav">
-      <a class="nav-link" href="../">Open app</a>
-    </nav>
   </header>
 
-<main class="container">
-  <!-- HERO -->
-  <section class="hero">
-    <h1>A simple way to keep track of your physio exercises</h1>
-    <p class="lead">
-      Built for rehab, not workouts. Log what you did, remember how it felt, and notice progress between appointments.
-    </p>
+  <main>
+    <!-- HERO -->
+    <section class="section hero">
+      <div class="container hero-grid reveal">
+        <div class="hero-copy">
+          <p class="eyebrow">Simple physio exercise tracking</p>
 
-    <div class="cta-row">
-      <a class="btn primary" href="https://forms.gle/D9g89od3X2r4brPq7" target="_blank" rel="noopener">Join the Pro waitlist</a>
-      <a class="btn secondary" href="./">Try the free app</a>
-    </div>
+          <h1>Keep track of physio.<br class="hide-mobile" /> Without turning it into a workout app.</h1>
 
-    <p class="micro">Free • No account • Works offline • Data stays on your device</p>
-  </section>
+          <p class="lead">
+            Log your rehab exercises in seconds. Stay consistent between appointments, remember what changed, and bring a clear record to your physio.
+          </p>
 
-  <!-- WHY -->
-  <section class="section">
-    <h2>Why this exists</h2>
+          <div class="cta-row">
+            <a class="btn primary" href="https://forms.gle/J8UFMqWyA77Pmu286" target="_blank" rel="noopener">Join Pro waitlist</a>
+            <a class="btn secondary" href="./">Try the free app</a>
+          </div>
 
-    <div class="grid">
-      <div class="card">
-        <h3>It’s easy to forget what you actually did</h3>
-        <p>Between appointments, sessions blur together. A simple record beats guessing.</p>
+          <ul class="trust-strip" aria-label="Key promises">
+            <li>Free</li>
+            <li>No account</li>
+            <li>Works offline</li>
+            <li>Data stays on your device</li>
+          </ul>
+        </div>
+
+        <div class="hero-media">
+          <div class="device reveal">
+            <div class="device-top">
+              <span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span>
+              <span class="device-chip">Free web app</span>
+            </div>
+            <img
+              class="device-img"
+              src="./hero-app.png"
+              alt="Screenshot of the Physio Tracker web app showing a simple routine list and logging controls."
+              loading="eager"
+            />
+          </div>
+          <p class="micro hint">Looks like a calm notebook. Works like a tracker.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Progress is hard to notice week to week</h3>
-        <p>Small improvements don’t feel obvious day-to-day, so motivation drops.</p>
+    <!-- DISQUALIFICATION BAND -->
+    <section class="section">
+      <div class="container reveal">
+        <div class="band">
+          <div>
+            <h2 class="band-title">Built for rehab, not fitness.</h2>
+            <p class="band-text">No programs. No “PRs”. No feeds. Just a clean physio log you control.</p>
+          </div>
+          <a class="band-link" href="./">Open the free app →</a>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Most tools are built for fitness, not rehab</h3>
-        <p>Workout apps can be noisy and overbuilt. Notes and spreadsheets don’t stick.</p>
+    <!-- WHY -->
+    <section class="section">
+      <div class="container reveal">
+        <div class="section-head">
+          <h2>Why this exists</h2>
+          <p class="subhead">Physio is hard enough without trying to remember everything.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card reveal">
+            <h3>Sessions blur together</h3>
+            <p>Between appointments, it’s easy to forget what you actually did.</p>
+          </div>
+
+          <div class="card reveal">
+            <h3>Progress is hard to see</h3>
+            <p>Small improvements don’t feel obvious day to day — so motivation drops.</p>
+          </div>
+
+          <div class="card reveal">
+            <h3>Most tools are the wrong shape</h3>
+            <p>Workout apps are noisy. Notes and spreadsheets don’t stick.</p>
+          </div>
+        </div>
+
+        <p class="callout micro">Physio Tracker is a lightweight digital version of a physio notebook — nothing more.</p>
       </div>
-    </div>
+    </section>
 
-    <p class="micro">
-      Physio Tracker is a lightweight digital version of a physio notebook — nothing more.
-    </p>
-  </section>
+    <!-- BENEFITS -->
+    <section class="section">
+      <div class="container reveal">
+        <div class="section-head">
+          <h2>What it helps you do</h2>
+          <p class="subhead">Clarity and consistency — without extra effort.</p>
+        </div>
 
-  <!-- BENEFITS -->
-  <section class="section">
-    <h2>What it helps you do</h2>
+        <div class="grid3">
+          <div class="card reveal">
+            <h3>Stay consistent</h3>
+            <p>See what you’ve done without overthinking it.</p>
+          </div>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Stay consistent</h3>
-        <p>See what you’ve already done without overthinking it.</p>
+          <div class="card reveal">
+            <h3>Notice patterns</h3>
+            <p>Track how things feel over time, not just what you completed.</p>
+          </div>
+
+          <div class="card reveal">
+            <h3>Show up prepared</h3>
+            <p>Bring a simple record to your physio instead of relying on memory.</p>
+          </div>
+        </div>
+
+        <div class="inline-cta">
+          <a class="btn secondary" href="./">Try the free app →</a>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Notice patterns</h3>
-        <p>Track how things feel over time, not just what you completed.</p>
+    <!-- PRO TEASE -->
+    <section class="section">
+      <div class="container reveal">
+        <div class="pro">
+          <div class="pro-copy">
+            <h2>Coming next in Pro: progress charts</h2>
+            <p class="lead">
+              A simple way to answer: <em>“Is this actually working?”</em><br />
+              See trends over weeks — not just a list of sessions.
+            </p>
+            <p class="micro">
+              Pro isn’t built yet. Joining the waitlist helps decide whether it should be.
+              No spam — you’ll only hear from us if Pro is actually built.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn primary" href="https://forms.gle/J8UFMqWyA77Pmu286" target="_blank" rel="noopener">Join Pro waitlist</a>
+              <a class="btn ghost" href="./">Try the free app</a>
+            </div>
+
+            <p class="micro">Waitlist is a short Google Form: email + optional questions (helps prioritise what to build).</p>
+          </div>
+
+          <div class="pro-preview reveal" aria-label="Example progress preview">
+            <div class="preview-head">
+              <span class="preview-pill">Pro preview</span>
+              <span class="preview-muted">Weekly consistency</span>
+            </div>
+            <div class="chart">
+              <div class="bar" style="height: 28%"></div>
+              <div class="bar" style="height: 40%"></div>
+              <div class="bar" style="height: 34%"></div>
+              <div class="bar" style="height: 55%"></div>
+              <div class="bar" style="height: 62%"></div>
+              <div class="bar" style="height: 48%"></div>
+              <div class="bar" style="height: 70%"></div>
+            </div>
+            <p class="micro preview-foot">Simple, readable trends — designed for rehab, not performance.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Prepare for appointments</h3>
-        <p>Bring a clear record to your physio instead of relying on memory.</p>
+    <!-- TRUST -->
+    <section class="section">
+      <div class="container reveal">
+        <div class="section-head">
+          <h2>Privacy-first by default</h2>
+          <p class="subhead">Trust comes from what we don’t ask for.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card reveal">
+            <h3>No accounts</h3>
+            <p>Start immediately — nothing to sign up for.</p>
+          </div>
+
+          <div class="card reveal">
+            <h3>No cloud sync</h3>
+            <p>Your rehab log stays on your device unless you choose to export it.</p>
+          </div>
+
+          <div class="card reveal">
+            <h3>Works offline</h3>
+            <p>Use it anywhere — even with no signal.</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="cta-row">
-      <a class="btn secondary" href="./">Try the free app</a>
-    </div>
-  </section>
-
-  <!-- PRO / WAITLIST -->
-  <section class="section">
-    <h2>Coming next: simple progress tracking (Pro)</h2>
-
-    <p class="lead">
-      Some people want more than a log — especially a way to see whether things are improving over time.
-      Pro is planned to add basic progress charts to help answer: <em>“Is this actually working?”</em>
-    </p>
-
-    <p class="micro">
-      Pro isn’t built yet. Joining the waitlist helps decide whether it should be.
-      No spam — you’ll only hear from us if Pro is actually built.
-    </p>
-
-    <div class="cta-row">
-      <a class="btn primary" href="https://forms.gle/D9g89od3X2r4brPq7" target="_blank" rel="noopener">Join the Pro waitlist</a>
-      <a class="btn secondary" href="./">Try the free app</a>
-    </div>
-
-    <p class="micro">
-      The waitlist is a short Google Form: email + a couple of optional questions (helps prioritise what to build).
-    </p>
-  </section>
-
-  <!-- TRUST / PRIVACY -->
-  <section class="section">
-    <h2>Privacy-first by default</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>No accounts</h3>
-        <p>Start immediately — nothing to sign up for.</p>
+    <!-- FINAL CTA -->
+    <section class="section">
+      <div class="container reveal">
+        <div class="final">
+          <div>
+            <h2>Try it in 30 seconds.</h2>
+            <p class="subhead">No account. No setup. Just start logging.</p>
+          </div>
+          <div class="cta-row">
+            <a class="btn primary" href="https://forms.gle/J8UFMqWyA77Pmu286" target="_blank" rel="noopener">Join Pro waitlist</a>
+            <a class="btn secondary" href="./">Try the free app</a>
+          </div>
+          <p class="micro">
+            Physio Tracker is a personal tracking tool and does not provide medical advice.
+            <a href="./privacy.html">Privacy</a> • <a href="./disclaimer.html">Disclaimer</a> • <a href="./feedback.html">Feedback</a>
+          </p>
+        </div>
       </div>
-
-      <div class="card">
-        <h3>No cloud sync</h3>
-        <p>Your rehab log stays on your device unless you choose to export it.</p>
-      </div>
-
-      <div class="card">
-        <h3>Works offline</h3>
-        <p>Use it anywhere — even with no signal.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER CTA -->
-  <section class="section">
-    <div class="cta-row">
-      <a class="btn primary" href="https://forms.gle/D9g89od3X2r4brPq7" target="_blank" rel="noopener">Join the Pro waitlist</a>
-      <a class="btn secondary" href="./">Try the free app</a>
-    </div>
-
-    <p class="micro">
-      Physio Tracker is a personal tracking tool and does not provide medical advice.
-    </p>
-  </section>
-</main>
-
-
-  <footer class="container footer">
-    <span class="micro">© Physio Tracker</span>
-  </footer>
+    </section>
+  </main>
 
   <script src="./main.js"></script>
 </body>
