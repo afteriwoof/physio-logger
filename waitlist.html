@@ -27,7 +27,7 @@
     <main class="mt-5">
       <section class="p-4 rounded-2xl border bg-white shadow-sm">
         <!-- IMPORTANT: replace action URL with your waitlist Formspree endpoint -->
-        <form id="waitlistForm" action="https://formspree.io/f/xzdapnoo" method="POST" class="space-y-4">
+        <form id="waitlistForm" action="https://formspree.io/f/YOUR_WAITLIST_FORM_ID" method="POST" class="space-y-4">
           <!-- Honeypot (simple spam trap) -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
@@ -70,4 +70,90 @@
 
             <div class="mt-2 space-y-2 text-sm text-slate-700">
               <label class="flex items-center gap-2">
-                <input type="radio"
+                <input type="radio" name="charts_help" value="yes" />
+                <span>Yes, definitely</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="radio" name="charts_help" value="maybe" />
+                <span>Maybe</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="radio" name="charts_help" value="no" />
+                <span>Probably not</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="block">
+            <span class="text-sm text-slate-700">Anything frustrating about tracking physio? (optional)</span>
+            <textarea
+              name="frustration"
+              rows="4"
+              class="mt-1 w-full rounded-lg border border-slate-200 bg-white p-2 text-sm"
+              placeholder="Optional. One sentence is plenty."
+            ></textarea>
+          </label>
+
+          <button type="submit" class="px-3 py-2 rounded-lg text-sm bg-slate-900 text-white hover:bg-slate-800">
+            Join Pro waitlist
+          </button>
+
+          <p class="text-xs text-slate-500">
+            No spam. I’ll only email when there’s something concrete to try. Submissions are handled by Formspree (a third-party form service).
+          </p>
+
+          <!-- Optional inline status message if you add the JS below -->
+          <p id="statusMsg" class="text-sm text-slate-600"></p>
+        </form>
+      </section>
+
+      <section class="mt-4 text-sm text-slate-700">
+        <p class="font-medium text-slate-800">Prefer to try it first?</p>
+        <p class="mt-1">
+          Open the free app:
+          <a class="underline" href="./index.html">physiotracker.app</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="mt-6 text-xs text-slate-500">
+      <a href="./privacy.html" class="hover:underline">Privacy</a>
+      <span class="mx-2">•</span>
+      <a href="./disclaimer.html" class="hover:underline">Disclaimer</a>
+      <span class="mx-2">•</span>
+      <a href="./feedback.html" class="hover:underline">Feedback</a>
+    </footer>
+  </div>
+
+  <!-- Optional: inline success message without leaving the page -->
+  <script>
+    (function () {
+      const form = document.getElementById("waitlistForm");
+      const msg = document.getElementById("statusMsg");
+      if (!form || !msg) return;
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        msg.textContent = "Submitting…";
+
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+          });
+
+          if (res.ok) {
+            form.reset();
+            msg.textContent = "You’re on the list. I’ll email when Pro is ready to try.";
+          } else {
+            msg.textContent = "Something went wrong — please try again.";
+          }
+        } catch {
+          msg.textContent = "Network error — please check your connection and try again.";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
