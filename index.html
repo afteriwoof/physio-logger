@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" x-data="app()" x-init="init()" class="h-full">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Physio Tracker App – Track Rehab Exercises Offline</title>
-  <meta name="description" content="Free physio exercise tracker. Log rehab exercises, track progress, and export your data. No account. Works offline." />
+  <meta name="description"
+    content="Free physio exercise tracker. Log rehab exercises, track progress, and export your data. No account. Works offline." />
   <!-- PWA manifest -->
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#10b981">
@@ -29,7 +31,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MES7VBBT0S"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-MES7VBBT0S', {
       anonymize_ip: true,
@@ -38,6 +40,7 @@
     });
   </script>
 </head>
+
 <body class="h-full bg-slate-50 text-slate-900">
   <div class="max-w-3xl mx-auto p-4 sm:p-6">
     <!-- Header -->
@@ -47,18 +50,17 @@
         <p class="text-sm text-slate-600">Simple physio exercise tracking • <span x-text="prettyDate(today)"></span></p>
       </div>
       <div class="flex items-center gap-3">
-        <div class="flex -space-x-1" x-data="{}" :title="'7-day completion: ' + Math.round(stats.completionPct*100) + '%'">
+        <div class="flex -space-x-1" x-data="{}"
+          :title="'7-day completion: ' + Math.round(stats.completionPct*100) + '%'">
           <template x-for="(d,i) in stats.last7Days" :key="i">
-            <div class="w-4 h-4 rounded ring-1 ring-white" :class="d.completed ? 'bg-emerald-500' : 'bg-slate-300'"></div>
+            <div class="w-4 h-4 rounded ring-1 ring-white" :class="d.completed ? 'bg-emerald-500' : 'bg-slate-300'">
+            </div>
           </template>
         </div>
-        <span class="text-xs text-slate-600" x-text="Math.round(stats.completionPct*100)+'%'" aria-label="7 day completion percent"></span>
-        <a
-          href="https://physiotracker.framer.ai"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="ml-2 text-xs px-3 py-1.5 rounded-full bg-blue-600 text-white hover:bg-blue-700 shadow-sm whitespace-nowrap"
-        >
+        <span class="text-xs text-slate-600" x-text="Math.round(stats.completionPct*100)+'%'"
+          aria-label="7 day completion percent"></span>
+        <a href="https://physiotracker.framer.ai" target="_blank" rel="noopener noreferrer"
+          class="ml-2 text-xs px-3 py-1.5 rounded-full bg-blue-600 text-white hover:bg-blue-700 shadow-sm whitespace-nowrap">
           Pro features
         </a>
       </div>
@@ -68,10 +70,12 @@
     <section x-show="showOnboarding" x-cloak class="mt-4 p-4 rounded-2xl border bg-white shadow-sm">
       <div class="flex items-start justify-between gap-3">
         <div>
-          <h2 class="text-lg font-semibold">A simple way to keep track of your physio exercises and stay consistent between appointments.</h2>
+          <h2 class="text-lg font-semibold">A simple way to keep track of your physio exercises and stay consistent
+            between appointments.</h2>
           <p class="text-sm text-slate-700 mt-1">
-            Physio Tracker helps you keep a clear record of your rehab exercises over time so you can build a picture of your progress.
-          </p>  
+            Physio Tracker helps you keep a clear record of your rehab exercises over time so you can build a picture of
+            your progress.
+          </p>
           <p class="text-sm text-slate-600 mt-2">
             It's deliberately simple, works offline, and doesn't require accounts or cloud sync.
           </p>
@@ -81,7 +85,7 @@
           </p>
         </div>
         <button @click="dismissOnboarding()"
-                class="shrink-0 px-3 py-1.5 rounded-lg text-sm bg-slate-100 hover:bg-slate-200">
+          class="shrink-0 px-3 py-1.5 rounded-lg text-sm bg-slate-100 hover:bg-slate-200">
           Dismiss
         </button>
       </div>
@@ -128,10 +132,10 @@
           <a href="./privacy.html" class="text-sm underline text-slate-700">Privacy</a>
           <a href="./disclaimer.html" class="text-sm underline text-slate-700">Disclaimer</a>
           <a href="mailto:aiinnovationdesignlab@gmail.com?subject=Physio%20Tracker%20feedback"
-             class="text-sm underline text-slate-700">Feedback</a>
+            class="text-sm underline text-slate-700">Feedback</a>
 
           <button @click="dismissOnboarding()"
-                  class="ml-auto px-4 py-2 rounded-xl bg-emerald-600 text-white text-sm hover:bg-emerald-700">
+            class="ml-auto px-4 py-2 rounded-xl bg-emerald-600 text-white text-sm hover:bg-emerald-700">
             Start using the app
           </button>
         </div>
@@ -140,13 +144,19 @@
 
     <!-- Quick actions -->
     <section class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <button @click="logNextSet()" class="col-span-2 inline-flex items-center justify-center rounded-2xl bg-emerald-600 text-white py-2.5 px-4 shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500" aria-label="Log next set (X)">
+      <button @click="logNextSet()"
+        class="col-span-2 inline-flex items-center justify-center rounded-2xl bg-emerald-600 text-white py-2.5 px-4 shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        aria-label="Log next set (X)">
         <span class="font-medium">Log next set</span>
         <span class="ml-2 text-xs opacity-80">(X)</span>
       </button>
       <div class="flex gap-2">
-        <button @click="openAdd=true; $nextTick(()=> $refs.name?.focus())" class="flex-1 rounded-2xl bg-slate-200 py-2.5 px-3 hover:bg-slate-300 shadow text-sm" aria-label="Add exercise (N)">Add exercise <span class="text-xs opacity-70">(N)</span></button>
-        <button @click="exportJSON()" class="flex-1 rounded-2xl bg-slate-200 py-2.5 px-3 hover:bg-slate-300 shadow text-sm" aria-label="Export data (S)">Export</button>
+        <button @click="openAdd=true; $nextTick(()=> $refs.name?.focus())"
+          class="flex-1 rounded-2xl bg-slate-200 py-2.5 px-3 hover:bg-slate-300 shadow text-sm"
+          aria-label="Add exercise (N)">Add exercise <span class="text-xs opacity-70">(N)</span></button>
+        <button @click="exportJSON()"
+          class="flex-1 rounded-2xl bg-slate-200 py-2.5 px-3 hover:bg-slate-300 shadow text-sm"
+          aria-label="Export data (S)">Export</button>
       </div>
     </section>
 
@@ -154,7 +164,8 @@
     <section class="mt-6">
       <h2 class="text-lg font-semibold mb-2">Today’s routine</h2>
       <template x-if="exercises.length === 0">
-        <div class="text-sm text-slate-600 bg-white rounded-2xl p-4 ring-1 ring-slate-200">No exercises yet. Add your first one — keep it simple (e.g., “Quad sets 3×10”).</div>
+        <div class="text-sm text-slate-600 bg-white rounded-2xl p-4 ring-1 ring-slate-200">No exercises yet. Add your
+          first one — keep it simple (e.g., “Quad sets 3×10”).</div>
       </template>
 
       <div class="space-y-3">
@@ -166,19 +177,32 @@
                 <div class="text-xs text-slate-500" x-text="targetLabel(ex)"></div>
               </div>
               <div class="flex items-center gap-2">
-                <button @click="startEdit(ex)" class="text-slate-600 hover:text-slate-900 text-xs px-2 py-1 rounded-lg hover:bg-slate-100" aria-label="Edit exercise (E)">Edit</button>
-                <button @click="removeExercise(ex.id)" class="text-red-600 hover:text-red-700 text-xs px-2 py-1 rounded-lg hover:bg-red-50" aria-label="Delete exercise">Delete</button>
+                <button @click="startEdit(ex)"
+                  class="text-slate-600 hover:text-slate-900 text-xs px-2 py-1 rounded-lg hover:bg-slate-100"
+                  aria-label="Edit exercise (E)">Edit</button>
+                <button @click="removeExercise(ex.id)"
+                  class="text-red-600 hover:text-red-700 text-xs px-2 py-1 rounded-lg hover:bg-red-50"
+                  aria-label="Delete exercise">Delete</button>
               </div>
             </div>
 
             <div class="mt-3 flex items-center gap-2 flex-wrap">
-              <input type="number" min="1" class="w-20 rounded-xl border-slate-300 text-sm px-2 py-1" x-model.number="nextReps[ex.id]" :placeholder="ex.targetReps" aria-label="Reps for next set">
-              <button @click="logSet(ex.id, nextReps[ex.id] || ex.targetReps)" class="rounded-xl bg-emerald-600 text-white text-sm px-3 py-1.5 hover:bg-emerald-700" :disabled="isCompleteToday(ex)" :class="isCompleteToday(ex) ? 'opacity-50 cursor-not-allowed' : ''">+ Set</button>
-              <button @click="undoSet(ex.id)" class="rounded-xl bg-slate-200 text-sm px-3 py-1.5 hover:bg-slate-300">Undo</button>
-              <span class="text-sm text-slate-600">Today: <span class="font-medium" x-text="todaySets(ex).join(', ') || '—'"></span></span>
-              <span class="ml-auto text-xs px-2 py-1 rounded-full" :class="isCompleteToday(ex) ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200' : 'bg-slate-100 text-slate-700 ring-1 ring-slate-200'" x-text="isCompleteToday(ex) ? 'Done' : 'In progress'"></span>
+              <input type="number" min="1" class="w-20 rounded-xl border-slate-300 text-sm px-2 py-1"
+                x-model.number="nextReps[ex.id]" :placeholder="ex.targetReps" aria-label="Reps for next set">
+              <button @click="logSet(ex.id, nextReps[ex.id] || ex.targetReps)"
+                class="rounded-xl bg-emerald-600 text-white text-sm px-3 py-1.5 hover:bg-emerald-700"
+                :disabled="isCompleteToday(ex)" :class="isCompleteToday(ex) ? 'opacity-50 cursor-not-allowed' : ''">+
+                Set</button>
+              <button @click="undoSet(ex.id)"
+                class="rounded-xl bg-slate-200 text-sm px-3 py-1.5 hover:bg-slate-300">Undo</button>
+              <span class="text-sm text-slate-600">Today: <span class="font-medium"
+                  x-text="todaySets(ex).join(', ') || '—'"></span></span>
+              <span class="ml-auto text-xs px-2 py-1 rounded-full"
+                :class="isCompleteToday(ex) ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200' : 'bg-slate-100 text-slate-700 ring-1 ring-slate-200'"
+                x-text="isCompleteToday(ex) ? 'Done' : 'In progress'"></span>
             </div>
-            <div class="mt-2 text-xs text-slate-500">Streak: <span x-text="stats.streakById[ex.id] ?? 0"></span> day(s)</div>
+            <div class="mt-2 text-xs text-slate-500">Streak: <span x-text="stats.streakById[ex.id] ?? 0"></span> day(s)
+            </div>
           </div>
         </template>
       </div>
@@ -191,25 +215,32 @@
         <div class="grid grid-cols-12 gap-2 items-center">
           <div class="col-span-5">
             <label class="block text-xs text-slate-600 mb-1">Name</label>
-            <input x-ref="name" x-model.trim="form.name" class="w-full rounded-xl border-slate-300 px-3 py-2" placeholder="e.g., Quad sets"/>
+            <input x-ref="name" x-model.trim="form.name" class="w-full rounded-xl border-slate-300 px-3 py-2"
+              placeholder="e.g., Quad sets" />
           </div>
           <div class="col-span-2">
             <label class="block text-xs text-slate-600 mb-1">Sets</label>
-            <input type="number" min="1" x-model.number="form.targetSets" class="w-full rounded-xl border-slate-300 px-3 py-2"/>
+            <input type="number" min="1" x-model.number="form.targetSets"
+              class="w-full rounded-xl border-slate-300 px-3 py-2" />
           </div>
           <div class="col-span-2">
             <label class="block text-xs text-slate-600 mb-1">Reps</label>
-            <input type="number" min="1" x-model.number="form.targetReps" class="w-full rounded-xl border-slate-300 px-3 py-2"/>
+            <input type="number" min="1" x-model.number="form.targetReps"
+              class="w-full rounded-xl border-slate-300 px-3 py-2" />
           </div>
           <div class="col-span-3">
             <label class="block text-xs text-slate-600 mb-1">Side (optional)</label>
-            <input x-model.trim="form.side" class="w-full rounded-xl border-slate-300 px-3 py-2" placeholder="left/right/both"/>
+            <input x-model.trim="form.side" class="w-full rounded-xl border-slate-300 px-3 py-2"
+              placeholder="left/right/both" />
           </div>
         </div>
         <div class="mt-3 flex gap-2">
-          <button x-show="!form.id" @click="addExercise()" class="rounded-2xl bg-slate-900 text-white px-4 py-2 hover:bg-black">Add</button>
-          <button x-show="form.id" @click="saveEdit()" class="rounded-2xl bg-slate-900 text-white px-4 py-2 hover:bg-black">Save</button>
-          <button x-show="form.id" @click="cancelEdit()" class="rounded-2xl bg-slate-200 px-4 py-2 hover:bg-slate-300">Cancel</button>
+          <button x-show="!form.id" @click="addExercise()"
+            class="rounded-2xl bg-slate-900 text-white px-4 py-2 hover:bg-black">Add</button>
+          <button x-show="form.id" @click="saveEdit()"
+            class="rounded-2xl bg-slate-900 text-white px-4 py-2 hover:bg-black">Save</button>
+          <button x-show="form.id" @click="cancelEdit()"
+            class="rounded-2xl bg-slate-200 px-4 py-2 hover:bg-slate-300">Cancel</button>
         </div>
       </div>
     </section>
@@ -218,228 +249,253 @@
     <section class="mt-8">
       <h2 class="text-lg font-semibold mb-2">Data</h2>
       <div class="bg-white rounded-2xl p-4 ring-1 ring-slate-200 shadow-sm flex items-center gap-3 flex-wrap">
-        <button @click="exportJSON()" class="rounded-2xl bg-slate-900 text-white px-4 py-2 hover:bg-black">Export JSON</button>
+        <button @click="exportJSON()" class="rounded-2xl bg-slate-900 text-white px-4 py-2 hover:bg-black">Export
+          JSON</button>
         <label class="rounded-2xl bg-slate-200 px-4 py-2 hover:bg-slate-300 cursor-pointer">
           Import JSON<input type="file" class="hidden" accept="application/json" @change="importJSON($event)" />
         </label>
-        <span class="text-xs text-slate-500">Your data is stored locally in your browser on this device only (no server). If you switch browsers, devices, or clear site data, your entries won't appear. Use Export/Import to back up or move your data.</span>
+        <span class="text-xs text-slate-500">Your data is stored locally in your browser on this device only (no
+          server). If you switch browsers, devices, or clear site data, your entries won't appear. Use Export/Import to
+          back up or move your data.</span>
       </div>
     </section>
 
     <!-- Footer & shortcuts -->
     <footer class="mt-10 text-xs text-slate-500 flex items-center justify-between">
-      <div>Shortcuts: <kbd class="px-1 ring-1 ring-slate-300 rounded">X</kbd> log next • <kbd class="px-1 ring-1 ring-slate-300 rounded">N</kbd> add exercise • <kbd class="px-1 ring-1 ring-slate-300 rounded">S</kbd> export • <kbd class="px-1 ring-1 ring-slate-300 rounded">E</kbd> edit selected</div>
+      <div>Shortcuts: <kbd class="px-1 ring-1 ring-slate-300 rounded">X</kbd> log next • <kbd
+          class="px-1 ring-1 ring-slate-300 rounded">N</kbd> add exercise • <kbd
+          class="px-1 ring-1 ring-slate-300 rounded">S</kbd> export • <kbd
+          class="px-1 ring-1 ring-slate-300 rounded">E</kbd> edit selected</div>
       <button @click="resetAll()" class="text-red-600 hover:text-red-700">Reset all</button>
     </footer>
   </div>
 
-<script>
-function app(){
-  const STORAGE_KEY = 'physio_v1';
-    // Analytics helper (won't break offline)
-    function track(eventName, params) {
-      if (window.gtag) {
-        window.gtag('event', eventName, params || {});
-      }
-    }
-  return {
-    // State
-    exercises: [], // {id,name,targetSets,targetReps,side}
-    logs: [],      // {id,exerciseId,date,sets: [reps,...]}
-    today: '',
-    form: { id:null, name:'', targetSets:3, targetReps:10, side:'' },
-    nextReps: {},
-    stats: { completionPct:0, last7Days:[], streakById:{} },
-    openAdd:false,
-    showOnboarding: true,
-
-    init(){
-      this.today = this.todayStr();
-      const onboarded = localStorage.getItem("physio_onboarded_v1") === "1";
-      this.showOnboarding = !onboarded;
-      const saved = this.load();
-      if(saved){ this.exercises = saved.exercises; this.logs = saved.logs; }
-      if(this.exercises.length===0){
-        this.exercises = [
-          {id: crypto.randomUUID(), name:'Quad sets', targetSets:3, targetReps:10, side:'left'},
-        ];
-      }
-      this.refreshStats();
-      window.addEventListener('keydown', (e)=>{
-        if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
-        if(e.key.toLowerCase()==='x'){ e.preventDefault(); this.logNextSet(); }
-        if(e.key.toLowerCase()==='n'){ e.preventDefault(); this.openAdd=true; this.$nextTick(()=> this.$refs.name?.focus()); }
-        if(e.key.toLowerCase()==='s'){ e.preventDefault(); this.exportJSON(); }
-        if(e.key.toLowerCase()==='e'){ e.preventDefault(); if(this.exercises[0]) this.startEdit(this.exercises[0]); }
-      });
-    },
-
-    dismissOnboarding(){
-      localStorage.setItem("physio_onboarded_v1", "1");
-      this.showOnboarding = false;
-      track('dismiss_onboarding');
-    },
-
-    
-    // --- Helpers ---
-    todayStr(d=new Date()){
-      // local YYYY-MM-DD
-      const tzOffset = d.getTimezoneOffset(); // minutes
-      const local = new Date(d.getTime() - tzOffset*60000);
-      return local.toISOString().slice(0,10);
-    },
-    prettyDate(iso){
-      const [y,m,d] = iso.split('-').map(Number);
-      const dt = new Date(y, m-1, d);
-      return dt.toLocaleDateString(undefined,{ weekday:'short', month:'short', day:'numeric'});
-    },
-    uid(){ return crypto.randomUUID(); },
-    save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify({exercises:this.exercises, logs:this.logs})); },
-    load(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)); }catch(e){ return null; } },
-
-    // --- Exercises ---
-    targetLabel(ex){
-      const side = ex.side ? ` • ${ex.side}` : '';
-      return `${ex.targetSets}×${ex.targetReps}${side}`;
-    },
-    addExercise(){
-      const {name,targetSets,targetReps,side} = this.form;
-      if(!name || targetSets<1 || targetReps<1) return;
-      this.exercises.push({id:this.uid(), name, targetSets, targetReps, side:side||''});
-      this.form = { id:null, name:'', targetSets:3, targetReps:10, side:'' };
-      this.save(); this.refreshStats();
-    },
-    startEdit(ex){ this.form = {...ex}; this.$refs.name?.focus(); },
-    saveEdit(){
-      const i = this.exercises.findIndex(e=>e.id===this.form.id);
-      if(i>-1){ this.exercises[i] = {...this.form}; this.form = { id:null, name:'', targetSets:3, targetReps:10, side:'' }; this.save(); this.refreshStats(); }
-    },
-    cancelEdit(){ this.form = { id:null, name:'', targetSets:3, targetReps:10, side:'' }; },
-    removeExercise(id){
-      this.exercises = this.exercises.filter(e=>e.id!==id);
-      this.logs = this.logs.filter(l=>l.exerciseId!==id);
-      this.save(); this.refreshStats();
-    },
-
-    // --- Logging ---
-    findTodayLog(exId){ return this.logs.find(l=>l.exerciseId===exId && l.date===this.today); },
-    todaySets(ex){ const l = this.findTodayLog(ex.id); return l? l.sets : []; },
-    isCompleteToday(ex){ const l=this.findTodayLog(ex.id); return l? l.sets.length >= ex.targetSets : false; },
-    logSet(exId,reps){
-      let l = this.logs.find(l=>l.exerciseId===exId && l.date===this.today);
-      if(!l){ l = {id:this.uid(), exerciseId:exId, date:this.today, sets:[]}; this.logs.push(l); }
-      const exercise = this.exercises.find(e=>e.id===exId);
-      const validReps = Number(reps);
-      const safeReps = (isNaN(validReps) || validReps < 1) ? (exercise?.targetReps || 1) : Math.floor(validReps);
-      l.sets.push(safeReps);
-      this.save(); this.refreshStats();
-      try { track('log_set', { exercise_id: String(exId), reps: safeReps }); } catch {}
-    },
-    undoSet(exId){
-      let l = this.findTodayLog(exId); if(!l) return;
-      l.sets.pop(); if(l.sets.length===0){ this.logs = this.logs.filter(x=>x!==l); }
-      this.save(); this.refreshStats();
-    },
-    logNextSet(){
-      // First exercise that isn't complete today
-      const ex = this.exercises.find(e=>!this.isCompleteToday(e));
-      if(!ex) return;
-      const reps = this.nextReps[ex.id] || ex.targetReps;
-      this.logSet(ex.id, reps);
-    },
-
-    // --- Stats ---
-    refreshStats(){
-      const last7Days = [];
-      const streakById = {};
-      // completion: days with any log
-      let daysWithAny = 0;
-      for(let i=6;i>=0;i--){
-        const day = this.offsetDate(-i);
-        const completed = this.logs.some(l=>l.date===day);
-        if(completed) daysWithAny++;
-        last7Days.push({date:day, completed});
-      }
-      // per-exercise streak ending today
-      for(const ex of this.exercises){
-        let streak = 0; let offset=0;
-        while(true){
-          const day = this.offsetDate(-offset);
-          const has = this.logs.some(l=>l.exerciseId===ex.id && l.date===day);
-          if(has){ streak++; offset++; } else break;
+  <script>
+    function app() {
+      const STORAGE_KEY = 'physio_v1';
+      // Analytics helper (won't break offline)
+      function track(eventName, params) {
+        if (window.gtag) {
+          window.gtag('event', eventName, params || {});
         }
-        streakById[ex.id] = streak;
       }
-      this.stats = { completionPct: daysWithAny/7, last7Days, streakById };
-    },
-    offsetDate(delta){
-      const d = new Date(); d.setDate(d.getDate()+delta);
-      return this.todayStr(d);
-    },
+      return {
+        // State
+        exercises: [], // {id,name,targetSets,targetReps,side}
+        logs: [],      // {id,exerciseId,date,sets: [reps,...]}
+        today: '',
+        form: { id: null, name: '', targetSets: 3, targetReps: 10, side: '' },
+        nextReps: {},
+        stats: { completionPct: 0, last7Days: [], streakById: {} },
+        openAdd: false,
+        showOnboarding: true,
 
-    // --- Data I/O ---
-    exportJSON(){
-      const data = { exercises:this.exercises, logs:this.logs, exportedAt:new Date().toISOString(), schema:'v1' };
-      const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = `physio-${this.today}.json`; a.click(); URL.revokeObjectURL(url);
-    },
-    importJSON(evt){
-      const file = evt.target.files[0]; if(!file) return;
-      const reader = new FileReader();
-      reader.onload = (e)=>{
-        try{
-          const data = JSON.parse(e.target.result);
-          if(!data.exercises || !data.logs) throw new Error('Invalid file');
-          this.exercises = data.exercises; this.logs = data.logs; this.save(); this.refreshStats();
-        }catch(err){ alert('Import failed: '+err.message); }
-        evt.target.value = '';
+        init() {
+          this.today = this.todayStr();
+          const onboarded = localStorage.getItem("physio_onboarded_v1") === "1";
+          this.showOnboarding = !onboarded;
+          const saved = this.load();
+          if (saved) { this.exercises = saved.exercises; this.logs = saved.logs; }
+          if (this.exercises.length === 0) {
+            this.exercises = [
+              { id: crypto.randomUUID(), name: 'Quad sets', targetSets: 3, targetReps: 10, side: 'left' },
+            ];
+          }
+          this.refreshStats();
+          window.addEventListener('keydown', (e) => {
+            if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+            if (e.key.toLowerCase() === 'x') { e.preventDefault(); this.logNextSet(); }
+            if (e.key.toLowerCase() === 'n') { e.preventDefault(); this.openAdd = true; this.$nextTick(() => this.$refs.name?.focus()); }
+            if (e.key.toLowerCase() === 's') { e.preventDefault(); this.exportJSON(); }
+            if (e.key.toLowerCase() === 'e') { e.preventDefault(); if (this.exercises[0]) this.startEdit(this.exercises[0]); }
+          });
+        },
+
+        dismissOnboarding() {
+          localStorage.setItem("physio_onboarded_v1", "1");
+          this.showOnboarding = false;
+          track('dismiss_onboarding');
+        },
+
+
+        // --- Helpers ---
+        todayStr(d = new Date()) {
+          // local YYYY-MM-DD
+          const tzOffset = d.getTimezoneOffset(); // minutes
+          const local = new Date(d.getTime() - tzOffset * 60000);
+          return local.toISOString().slice(0, 10);
+        },
+        prettyDate(iso) {
+          const [y, m, d] = iso.split('-').map(Number);
+          const dt = new Date(y, m - 1, d);
+          return dt.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+        },
+        uid() { return crypto.randomUUID(); },
+        save() { localStorage.setItem(STORAGE_KEY, JSON.stringify({ exercises: this.exercises, logs: this.logs })); },
+        load() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (e) { return null; } },
+
+        // --- Exercises ---
+        targetLabel(ex) {
+          const side = ex.side ? ` • ${ex.side}` : '';
+          return `${ex.targetSets}×${ex.targetReps}${side}`;
+        },
+        addExercise() {
+          const { name, targetSets, targetReps, side } = this.form;
+          if (!name || targetSets < 1 || targetReps < 1) return;
+          this.exercises.push({ id: this.uid(), name, targetSets, targetReps, side: side || '' });
+          this.form = { id: null, name: '', targetSets: 3, targetReps: 10, side: '' };
+          this.save(); this.refreshStats();
+        },
+        startEdit(ex) { this.form = { ...ex }; this.$refs.name?.focus(); },
+        saveEdit() {
+          const i = this.exercises.findIndex(e => e.id === this.form.id);
+          if (i > -1) { this.exercises[i] = { ...this.form }; this.form = { id: null, name: '', targetSets: 3, targetReps: 10, side: '' }; this.save(); this.refreshStats(); }
+        },
+        cancelEdit() { this.form = { id: null, name: '', targetSets: 3, targetReps: 10, side: '' }; },
+        removeExercise(id) {
+          this.exercises = this.exercises.filter(e => e.id !== id);
+          this.logs = this.logs.filter(l => l.exerciseId !== id);
+          this.save(); this.refreshStats();
+        },
+
+        // --- Logging ---
+        findTodayLog(exId) { return this.logs.find(l => l.exerciseId === exId && l.date === this.today); },
+        todaySets(ex) { const l = this.findTodayLog(ex.id); return l ? l.sets : []; },
+        isCompleteToday(ex) { const l = this.findTodayLog(ex.id); return l ? l.sets.length >= ex.targetSets : false; },
+        logSet(exId, reps) {
+          let l = this.logs.find(l => l.exerciseId === exId && l.date === this.today);
+          if (!l) { l = { id: this.uid(), exerciseId: exId, date: this.today, sets: [] }; this.logs.push(l); }
+          const exercise = this.exercises.find(e => e.id === exId);
+          const validReps = Number(reps);
+          const safeReps = (isNaN(validReps) || validReps < 1) ? (exercise?.targetReps || 1) : Math.floor(validReps);
+          l.sets.push(safeReps);
+          this.save(); this.refreshStats();
+          try { track('log_set', { exercise_id: String(exId), reps: safeReps }); } catch { }
+        },
+        undoSet(exId) {
+          let l = this.findTodayLog(exId); if (!l) return;
+          l.sets.pop(); if (l.sets.length === 0) { this.logs = this.logs.filter(x => x !== l); }
+          this.save(); this.refreshStats();
+        },
+        logNextSet() {
+          // First exercise that isn't complete today
+          const ex = this.exercises.find(e => !this.isCompleteToday(e));
+          if (!ex) return;
+          const reps = this.nextReps[ex.id] || ex.targetReps;
+          this.logSet(ex.id, reps);
+        },
+
+        // --- Stats ---
+        refreshStats() {
+          const last7Days = [];
+          const streakById = {};
+          // completion: days with any log
+          let daysWithAny = 0;
+          for (let i = 6; i >= 0; i--) {
+            const day = this.offsetDate(-i);
+            const completed = this.logs.some(l => l.date === day);
+            if (completed) daysWithAny++;
+            last7Days.push({ date: day, completed });
+          }
+          // per-exercise streak ending today
+          for (const ex of this.exercises) {
+            let streak = 0; let offset = 0;
+            while (true) {
+              const day = this.offsetDate(-offset);
+              const has = this.logs.some(l => l.exerciseId === ex.id && l.date === day);
+              if (has) { streak++; offset++; } else break;
+            }
+            streakById[ex.id] = streak;
+          }
+          this.stats = { completionPct: daysWithAny / 7, last7Days, streakById };
+        },
+        offsetDate(delta) {
+          const d = new Date(); d.setDate(d.getDate() + delta);
+          return this.todayStr(d);
+        },
+
+        // --- Data I/O ---
+        exportJSON() {
+          const data = { exercises: this.exercises, logs: this.logs, exportedAt: new Date().toISOString(), schema: 'v1' };
+          const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url; a.download = `physio-${this.today}.json`; a.click(); URL.revokeObjectURL(url);
+        },
+        importJSON(evt) {
+          const file = evt.target.files[0]; if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            try {
+              const data = JSON.parse(e.target.result);
+              if (!data.exercises || !data.logs) throw new Error('Invalid file');
+              this.exercises = data.exercises; this.logs = data.logs; this.save(); this.refreshStats();
+            } catch (err) { alert('Import failed: ' + err.message); }
+            evt.target.value = '';
+          };
+          reader.readAsText(file);
+        },
+        resetAll() { if (confirm('Delete all local data?')) { localStorage.removeItem(STORAGE_KEY); location.reload(); } },
       };
-      reader.readAsText(file);
-    },
-    resetAll(){ if(confirm('Delete all local data?')){ localStorage.removeItem(STORAGE_KEY); location.reload(); } },
-  };
-}
-</script>
+    }
+  </script>
 
-<script>
-  if ('storage' in navigator && 'persist' in navigator.storage) {
-    navigator.storage.persist().then(granted => {
-      console.log('Persistent storage', granted ? 'granted ✅' : 'not granted ❌');
-    });
-  }
-</script>
+  <script>
+    if ('storage' in navigator && 'persist' in navigator.storage) {
+      navigator.storage.persist().then(granted => {
+        console.log('Persistent storage', granted ? 'granted ✅' : 'not granted ❌');
+      });
+    }
+  </script>
 
-    <!-- Always-visible footer links -->
-    <footer class="mt-6 pb-6">
+  <!-- Always-visible footer links -->
+  <footer class="mt-6 pb-6">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+      <!-- Action bar -->
       <div class="rounded-2xl border bg-white shadow-sm px-4 py-3">
-        <!-- Row 1 -->
-         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p class="text-sm text-slate-600">
-            Help improve Physio Tracker: anonymous feedback welcome.
+            Help improve Physio Tracker
+            <span class="text-slate-400">•</span>
+            <span class="text-slate-500">Anonymous feedback welcome</span>
           </p>
-          <p class="text-xs text-slate-500">
+
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+            <!-- Primary action -->
+            <a href="./feedback.html"
+              class="text-sm font-medium text-slate-900 underline underline-offset-2 hover:text-slate-700">
+              Send feedback
+            </a>
+
+            <div class="flex flex-col max-w-xs">
+              <a href="./waitlist.html"
+                class="text-sm font-medium text-sky-600 underline underline-offset-2 hover:text-sky-700">
+                Pro waitlist
+              </a>
+              <span class="text-xs text-slate-500">
+                Early access to tools that help you know if your physio is working
+              </span>
+            </div>
+
+          </div>
+
+          <p class="mt-2 text-xs text-slate-500">
             Local-only • Works offline
           </p>
         </div>
-        <!-- Row 2 -->
-         <div class="mt-3 flex flex-wrap gap-2">
-          <a href="./feedback.html" class="text-sm px-2.5 py-1 rounded-full bg-slate-900 text-white hover:bg-slate-800">
-            Send feedback
-          </a>
-          <a href="./waitlist.html" class="text-sm px-2.5 py-1 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50">
-            Pro waitlist
-          </a>
-          <a href="./privacy.html" class="text-sm px-2.5 py-1 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50">
-            Privacy
-          </a>
-          <a href="./disclaimer.html" class="text-sm px-2.5 py-1 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50">
-            Disclaimer
-          </a>
-        </div>
-      </div>
-    </footer>
 
-  </body>
+        <!-- Proper footer links (quiet, outside the box) -->
+        <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-500">
+          <a href="./privacy.html" class="hover:underline underline-offset-2">Privacy</a>
+          <a href="./disclaimer.html" class="hover:underline underline-offset-2">Disclaimer</a>
+        </div>
+
+      </div>
+  </footer>
+
+
+
+</body>
+
 </html>
