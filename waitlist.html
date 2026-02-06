@@ -18,10 +18,13 @@
   <div class="max-w-3xl mx-auto p-4 sm:p-6">
     <a href="./index.html" class="text-sm underline text-slate-700">← Back to app</a>
 
-    <h1 class="text-2xl font-semibold mt-3">Pro waitlist</h1>
+    <h1 class="text-2xl font-semibold mt-3">Physio Tracker Pro</h1>
     <p class="text-sm text-slate-600 mt-1">
-      Pro is focused on simple progress charts — a clearer way to see consistency and improvement over time.
-      If that would help you stick with physio, join the waitlist.
+      Physio Tracker Pro is about helping you know whether your physio is actually working. 
+      It turns what you do between appointments into clearer signals of progress, 
+      so you're not guessing, forgetting, or relying on gut feel.
+      <br><br>
+      If you'd like earlier access when Pro is ready, join the waitlist below.
     </p>
 
     <main class="mt-5">
@@ -35,7 +38,7 @@
           <input type="hidden" name="source" value="physiotracker.app/waitlist.html" />
 
           <label class="block">
-            <span class="text-sm font-medium text-slate-800">Email (required)</span>
+            <span class="text-sm font-medium text-slate-800">Email address</span>
             <input
               name="email"
               type="email"
@@ -45,61 +48,15 @@
               placeholder="you@example.com"
             />
           </label>
-
-          <label class="block">
-            <span class="text-sm text-slate-700">What are you doing physio for? (optional)</span>
-            <select
-              name="injury"
-              class="mt-1 w-full rounded-lg border border-slate-200 bg-white p-2 text-sm"
-            >
-              <option value="">Select one</option>
-              <option>Back</option>
-              <option>Knee</option>
-              <option>Ankle / foot</option>
-              <option>Hip</option>
-              <option>Shoulder</option>
-              <option>Neck</option>
-              <option>Other</option>
-            </select>
-          </label>
-
-          <fieldset class="block rounded-lg border border-slate-200 bg-white p-3">
-            <legend class="px-1 text-sm font-medium text-slate-800">
-              Would simple progress charts help you stick with physio? (optional)
-            </legend>
-
-            <div class="mt-2 space-y-2 text-sm text-slate-700">
-              <label class="flex items-center gap-2">
-                <input type="radio" name="charts_help" value="yes" />
-                <span>Yes, definitely</span>
-              </label>
-              <label class="flex items-center gap-2">
-                <input type="radio" name="charts_help" value="maybe" />
-                <span>Maybe</span>
-              </label>
-              <label class="flex items-center gap-2">
-                <input type="radio" name="charts_help" value="no" />
-                <span>Probably not</span>
-              </label>
-            </div>
-          </fieldset>
-
-          <label class="block">
-            <span class="text-sm text-slate-700">Anything frustrating about tracking physio? (optional)</span>
-            <textarea
-              name="frustration"
-              rows="4"
-              class="mt-1 w-full rounded-lg border border-slate-200 bg-white p-2 text-sm"
-              placeholder="Optional. One sentence is plenty."
-            ></textarea>
-          </label>
-
+            <p class="text-xs text-slate-500 mb-2">
+            Takes about 10 seconds.
+            </p>
           <button type="submit" class="px-3 py-2 rounded-lg text-sm bg-slate-900 text-white hover:bg-slate-800">
             Join Pro waitlist
           </button>
 
           <p class="text-xs text-slate-500">
-            No spam. I’ll only email when there’s something concrete to try. Submissions are handled by Formspree (a third-party form service).
+            No spam. One email when there's something concrete to try. (Submissions are handled by Formspree, a third-party form service).
           </p>
 
           <!-- Optional inline status message if you add the JS below -->
