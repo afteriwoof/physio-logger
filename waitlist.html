@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pro Waitlist • Physio Tracker</title>
+
+  <meta name="theme-color" content="#10b981">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="icon" href="./icon-192.png">
+
+  <!-- Keep styling consistent with the app -->
+  <script src="./vendor/tailwindcss.js"></script>
+</head>
+
+<body class="h-full bg-slate-50 text-slate-900">
+  <div class="max-w-3xl mx-auto p-4 sm:p-6">
+    <a href="./index.html" class="text-sm underline text-slate-700">← Back to app</a>
+
+    <h1 class="text-2xl font-semibold mt-3">Pro waitlist</h1>
+    <p class="text-sm text-slate-600 mt-1">
+      Pro is focused on simple progress charts — a clearer way to see consistency and improvement over time.
+      If that would help you stick with physio, join the waitlist.
+    </p>
+
+    <main class="mt-5">
+      <section class="p-4 rounded-2xl border bg-white shadow-sm">
+        <!-- IMPORTANT: replace action URL with your waitlist Formspree endpoint -->
+        <form id="waitlistForm" action="https://formspree.io/f/xzdapnoo" method="POST" class="space-y-4">
+          <!-- Honeypot (simple spam trap) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <!-- Tag the source for your own filtering -->
+          <input type="hidden" name="source" value="physiotracker.app/waitlist.html" />
+
+          <label class="block">
+            <span class="text-sm font-medium text-slate-800">Email (required)</span>
+            <input
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              class="mt-1 w-full rounded-lg border border-slate-200 bg-white p-2 text-sm"
+              placeholder="you@example.com"
+            />
+          </label>
+
+          <label class="block">
+            <span class="text-sm text-slate-700">What are you doing physio for? (optional)</span>
+            <select
+              name="injury"
+              class="mt-1 w-full rounded-lg border border-slate-200 bg-white p-2 text-sm"
+            >
+              <option value="">Select one</option>
+              <option>Back</option>
+              <option>Knee</option>
+              <option>Ankle / foot</option>
+              <option>Hip</option>
+              <option>Shoulder</option>
+              <option>Neck</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <fieldset class="block rounded-lg border border-slate-200 bg-white p-3">
+            <legend class="px-1 text-sm font-medium text-slate-800">
+              Would simple progress charts help you stick with physio? (optional)
+            </legend>
+
+            <div class="mt-2 space-y-2 text-sm text-slate-700">
+              <label class="flex items-center gap-2">
+                <input type="radio"
