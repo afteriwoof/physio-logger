@@ -413,21 +413,30 @@ function app(){
 
     <!-- Always-visible footer links -->
     <footer class="mt-6 pb-6">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6">
-        <div class="rounded-2xl border bg-white shadow-sm px-4 py-3 flex flex-wrap items-center gap-3">
-          <span class="text-sm text-slate-600">Help improve Physio Tracker: anonymous feedback welcome.</span>
-
-          <a href="./feedback.html"
-             class="text-sm underline text-slate-700">
-            Send Feedback
-          </a>
-          <a href="./waitlist.html" class="text-sm underline text-slate-700">Pro waitlist</a>
-          <a href="./privacy.html" class="text-sm underline text-slate-700">Privacy</a>
-          <a href="./disclaimer.html" class="text-sm underline text-slate-700">Disclaimer</a>
-
-          <span class="ml-auto text-xs text-slate-500">
+      <div class="rounded-2xl border bg-white shadow-sm px-4 py-3">
+        <!-- Row 1 -->
+         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <p class="text-sm text-slate-600">
+            Help improve Physio Tracker: anonymous feedback welcome.
+          </p>
+          <p class="text-xs text-slate-500">
             Local-only • Works offline
-          </span>
+          </p>
+        </div>
+        <!-- Row 2 -->
+         <div class="mt-3 flex flex-wrap gap-2">
+          <a href="./feedback.html" class="text-sm px-2.5 py-1 rounded-full bg-slate-900 text-white hover:bg-slate-800">
+            Send feedback
+          </a>
+          <a href="./waitlist.html" class="text-sm px-2.5 py-1 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50">
+            Pro waitlist
+          </a>
+          <a href="./privacy.html" class="text-sm px-2.5 py-1 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50">
+            Privacy
+          </a>
+          <a href="./disclaimer.html" class="text-sm px-2.5 py-1 rounded-full border border-slate-200 text-slate-700 hover:bg-slate-50">
+            Disclaimer
+          </a>
         </div>
       </div>
     </footer>

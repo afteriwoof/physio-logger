@@ -68,18 +68,18 @@
       <section class="mt-4 text-sm text-slate-700">
         <p class="font-medium text-slate-800">Prefer to try it first?</p>
         <p class="mt-1">
-          Open the free app:
+          Open the current app:
           <a class="underline" href="./index.html">physiotracker.app</a>
         </p>
       </section>
     </main>
 
     <footer class="mt-6 text-xs text-slate-500">
+      <a href="./feedback.html" class="hover:underline">Feedback</a>
+      <span class="mx-2">•</span>
       <a href="./privacy.html" class="hover:underline">Privacy</a>
       <span class="mx-2">•</span>
       <a href="./disclaimer.html" class="hover:underline">Disclaimer</a>
-      <span class="mx-2">•</span>
-      <a href="./feedback.html" class="hover:underline">Feedback</a>
     </footer>
   </div>
 
@@ -103,7 +103,7 @@
 
           if (res.ok) {
             form.reset();
-            msg.textContent = "You’re on the list. I’ll email when Pro is ready to try.";
+            msg.textContent = "You're on the list! In the meantime, you can provide any feedback via the link in the footer.";
           } else {
             msg.textContent = "Something went wrong — please try again.";
           }
