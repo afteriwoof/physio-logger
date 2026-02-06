@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pro Waitlist • Physio Tracker</title>
+
+  <meta name="description" content="Join the Physio Tracker Pro waitlist for progress charts and more. Simple rehab tracking, private by default." />
+
+  <!-- Optional: social sharing -->
+  <meta property="og:title" content="Physio Tracker Pro — Waitlist" />
+  <meta property="og:description" content="Progress charts for rehab consistency and improvement. Join the waitlist." />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="container header">
+    <a class="brand" href="../../">
+      <span class="brand-mark">PT</span>
+      <span class="brand-name">Physio Tracker</span>
+    </a>
+    <nav class="nav">
+      <a class="nav-link" href="../../">Open app</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Pro waitlist: progress charts for physio rehab</h1>
+      <p class="lead">
+        If physio is hard to stay consistent with — or progress is too slow to notice — Pro will add simple progress charts
+        to help you see consistency and change over time.
+      </p>
+      <p class="micro">No spam. I’ll only email when there’s something concrete to try.</p>
+    </section>
+
+    <section class="section">
+      <h2>Join the waitlist</h2>
+
+      <!-- IMPORTANT: replace the action URL with your Formspree endpoint -->
+      <form id="waitlistForm"
+            class="form card"
+            action="https://formspree.io/f/xzdapnoo"
+            method="POST">
+
+        <!-- Helps you filter these in emails/dashboards -->
+        <input type="hidden" name="source" value="physiotracker.app/start/waitlist" />
+
+        <label class="field">
+          <span class="label">Email address</span>
+          <input class="input" type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
+        </label>
+
+        <label class="field">
+          <span class="label">What are you doing physio for? (optional)</span>
+          <select class="input" name="injury">
+            <option value="">Select one</option>
+            <option>Back</option>
+            <option>Knee</option>
+            <option>Ankle / foot</option>
+            <option>Hip</option>
+            <option>Shoulder</option>
+            <option>Neck</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <fieldset class="field">
+          <legend class="label">Would simple progress charts help you stick with physio? (optional)</legend>
+          <label class="radio">
+            <input type="radio" name="charts_help" value="yes" />
+            <span>Yes, definitely</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="charts_help" value="maybe" />
+            <span>Maybe</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="charts_help" value="no" />
+            <span>Probably not</span>
+          </label>
+        </fieldset>
+
+        <label class="field">
+          <span class="label">Anything frustrating about tracking physio? (optional)</span>
+          <textarea class="input" name="frustration" rows="3" placeholder="One sentence is plenty."></textarea>
+        </label>
+
+        <button class="btn primary" type="submit">Join Pro waitlist</button>
+
+        <p class="micro">
+          Prefer to just try the app first? <a class="link" href="../../">Open the free app</a>
+        </p>
+
+        <!-- JS will use these for inline success/error -->
+        <div id="formMsg" class="msg" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2>What “Pro” means (for now)</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Progress charts</h3>
+          <p>Weekly consistency, streaks, and simple views of improvement over time.</p>
+        </div>
+        <div class="card">
+          <h3>Still private</h3>
+          <p>No accounts by default. Local-first design stays.</p>
+        </div>
+        <div class="card">
+          <h3>No bloat</h3>
+          <p>Rehab-first. Not a gym tracker. Not a social app.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <span class="micro">© Physio Tracker</span>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+</html>
